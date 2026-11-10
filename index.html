@@ -382,8 +382,8 @@
             <a href="index.html" class="active">Home</a>
             <a href="buy.html">Buy</a>
             <a href="trade.html">Trade</a>
-            <a href="governance.html">Governance</a>
-            <a href="vault.html">Vault</a>
+            <a href="fiat-rails.html">Fiat Rails</a>
+            <a href="gold-diamonds.html">Gold</a>
             <a href="ecosystem.html">Ecosystem</a>
             <button class="theme-switch" id="themeToggle" title="Toggle Theme">🌙</button>
         </nav>
@@ -420,7 +420,8 @@
         </div>
         <div class="hero-visual">
             <div class="hero-coin-glow"></div>
-            <img src="quadrillion_coin.png" alt="€Q Coin" class="hero-coin" onerror="this.src='quadrillion_logo.png'" />
+            <!-- ИСПОЛЬЗУЕМ ТВОЙ ФАЙЛ quadrillion_hero_core.png -->
+            <img src="quadrillion_hero_core.png" alt="€Q Coin" class="hero-coin" onerror="this.src='quadrillion_logo.png'" />
         </div>
     </div>
 </section>
@@ -622,7 +623,6 @@
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
     
-    // Проверяем сохраненную тему
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         body.setAttribute('data-theme', savedTheme);
