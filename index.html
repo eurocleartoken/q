@@ -195,11 +195,11 @@
             background: var(--glass-bg); border: 1px solid var(--glass-border);
             border-radius: 16px; padding: 24px; margin-bottom: 40px;
         }
-        .progress-header { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 15px; font-weight: 600; }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 15px; font-weight: 600; flex-wrap: wrap; gap: 8px; }
         .progress-header span:last-child { color: var(--gold); font-size: 18px; }
         .progress-bar-bg { background: rgba(0,0,0,0.5); border-radius: 10px; height: 20px; overflow: hidden; position: relative; }
         .progress-bar-fill { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); height: 100%; width: 0%; transition: width 1s ease-in-out; border-radius: 10px; box-shadow: 0 0 15px rgba(255,215,0,0.5); }
-        .progress-info { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; opacity: 0.6; }
+        .progress-info { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; opacity: 0.6; flex-wrap: wrap; gap: 6px; }
 
         .dashboard-container {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -405,50 +405,99 @@
     </div>
 </section>
 
-<!-- ЦЕНА + 5-ЛЕТНИЙ ПРОГРЕСС + ДАШБОРД (без Live Transactions) -->
 <section class="container">
+
     <div class="price-block">
-        <h3>€Q Live Price</h3>
+        <h3>€Q Launch Price</h3>
         <div class="price-big">$0.001</div>
+        <div style="font-size:16px; opacity:0.8; margin-bottom:16px;">
+            Target: <span style="color:var(--gold); font-weight:700;">$1.00</span> &nbsp;·&nbsp;
+            Potential: <span style="color:var(--gold); font-weight:700;">×1000</span>
+        </div>
         <a href="https://www.geckoterminal.com/solana/pools/EMrceaZJ71xteifUwzX6px4PeRvnPY5uugYFW2jTqCre" target="_blank">📊 View Live Chart on GeckoTerminal</a>
+    </div>
+
+    <div class="progress-container" id="stakingPulse">
+
+        <div class="progress-header">
+            <span>💎 Live Vault Yield — APR <span id="aprValue" style="color:var(--gold);">18.5%</span></span>
+            <span id="tvlPercent" style="color:var(--gold);">0%</span>
+        </div>
+
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBar" style="width:0%;"></div>
+        </div>
+
+        <div class="progress-info">
+            <span>TVL: <span id="tvlValue" style="color:var(--gold); font-weight:600;">$0</span></span>
+            <span>Target: $1,000,000,000</span>
+        </div>
+
+        <div class="dashboard-container" style="margin-top:20px; margin-bottom:0;">
+            <div class="dash-card">
+                <div class="dash-icon">👥</div>
+                <div class="dash-value" id="stakersCount">0</div>
+                <div class="dash-label">2-Year Stakers</div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-icon">🔒</div>
+                <div class="dash-value" id="lockedAmount">$0</div>
+                <div class="dash-label">Total Locked</div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-icon">📈</div>
+                <div class="dash-value">18.5%</div>
+                <div class="dash-label">Fixed APR (2y)</div>
+            </div>
+        </div>
+
+        <div style="margin-top:20px; padding:16px; background:rgba(255,215,0,0.05); border-radius:12px; border:1px solid var(--glass-border);">
+            <div style="font-size:14px; opacity:0.8; margin-bottom:8px;">💰 Calculate your 2-year yield:</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <input type="number" id="yieldInput" value="1000" min="1" style="flex:1; min-width:120px; padding:10px 14px; border-radius:10px; border:1px solid var(--glass-border); background:rgba(5,5,16,0.8); color:var(--text-color); font-size:15px; outline:none;" />
+                <div style="padding:10px 16px; background:rgba(255,215,0,0.1); border-radius:10px; border:1px solid var(--glass-border); font-weight:600; color:var(--gold); font-size:15px; white-space:nowrap;">
+                    + <span id="yieldResult">$370</span>
+                </div>
+            </div>
+            <div style="font-size:12px; opacity:0.6; margin-top:6px;">Simple APR × 2 years. Not compounding.</div>
+        </div>
+
     </div>
 
     <div class="progress-container">
         <div class="progress-header">
-            <span>⏳ 5-Year Journey Progress</span>
-            <span id="progressPercent">0.00%</span>
+            <span>🕐 Latest 2-Year Deposits</span>
+            <span style="opacity:0.6; font-size:12px;">auto-updated hourly</span>
         </div>
-        <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="progressBar" style="width: 0%;"></div>
-        </div>
-        <div class="progress-info">
-            <span>Start: Nov 11, 2026</span>
-            <span>Finish: Nov 11, 2031</span>
+        <div id="recentDeposits" style="font-family:'Courier New',monospace; font-size:13px; margin-top:8px;"></div>
+    </div>
+
+    <div class="price-block" style="text-align:left; padding:32px;">
+        <h3 style="text-align:center; margin-bottom:20px;">💎 Why Genesis?</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;">
+            <div style="padding:16px; background:rgba(255,215,0,0.05); border-radius:12px; border:1px solid var(--glass-border);">
+                <div style="font-size:20px; margin-bottom:6px;">🎯</div>
+                <strong style="color:var(--gold);">Lowest Entry</strong>
+                <p style="font-size:14px; opacity:0.8; margin-top:4px;">$0.001 — the floor of the ×1000 journey.</p>
+            </div>
+            <div style="padding:16px; background:rgba(255,215,0,0.05); border-radius:12px; border:1px solid var(--glass-border);">
+                <div style="font-size:20px; margin-bottom:6px;">⛓️</div>
+                <strong style="color:var(--gold);">Soulbound Governance</strong>
+                <p style="font-size:14px; opacity:0.8; margin-top:4px;">Vote protection from day one.</p>
+            </div>
+            <div style="padding:16px; background:rgba(255,215,0,0.05); border-radius:12px; border:1px solid var(--glass-border);">
+                <div style="font-size:20px; margin-bottom:6px;">🏦</div>
+                <strong style="color:var(--gold);">Mega-Vault Backing</strong>
+                <p style="font-size:14px; opacity:0.8; margin-top:4px;">Gold & diamonds with 20% buyback.</p>
+            </div>
+            <div style="padding:16px; background:rgba(255,215,0,0.05); border-radius:12px; border:1px solid var(--glass-border);">
+                <div style="font-size:20px; margin-bottom:6px;">🤖</div>
+                <strong style="color:var(--gold);">AI Treasury</strong>
+                <p style="font-size:14px; opacity:0.8; margin-top:4px;">Autonomous yield optimization.</p>
+            </div>
         </div>
     </div>
 
-    <div class="dashboard-container">
-        <div class="dash-card" data-tilt data-tilt-max="5">
-            <div class="dash-icon">👥</div>
-            <div class="dash-value">11</div>
-            <div class="dash-label">Holders</div>
-        </div>
-        <div class="dash-card" data-tilt data-tilt-max="5">
-            <div class="dash-icon">💧</div>
-            <div class="dash-value">$345B</div>
-            <div class="dash-label">Pool Liquidity</div>
-        </div>
-        <div class="dash-card" data-tilt data-tilt-max="5">
-            <div class="dash-icon">💰</div>
-            <div class="dash-value">$8.89T</div>
-            <div class="dash-label">Market Cap</div>
-        </div>
-        <div class="dash-card" data-tilt data-tilt-max="5">
-            <div class="dash-icon">🔥</div>
-            <div class="dash-value">0</div>
-            <div class="dash-label">Fees to Vault</div>
-        </div>
-    </div>
 </section>
 
 <section id="technology">
@@ -601,7 +650,7 @@
         cursorDot.style.top = `${posY}px`;
         cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
     });
-    document.querySelectorAll('a, button, .tech-card, .rwa-card').forEach(el => {
+    document.querySelectorAll('a, button, .tech-card, .rwa-card, .dash-card').forEach(el => {
         el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
         el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
     });
@@ -689,26 +738,74 @@
         btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
 
-    // ===== 5-ЛЕТНИЙ ПРОГРЕСС (считается от реальной даты, НЕ сбрасывается) =====
-    const startDate = new Date('2026-11-11T00:00:00Z').getTime();
-    const endDate = new Date('2031-11-11T00:00:00Z').getTime();
-    const totalDuration = endDate - startDate;
+    // ===== LIVE STAKING PULSE =====
+    const STAKING_START = new Date('2026-11-11T00:00:00Z').getTime();
+    const BASE_STAKERS = 1;
+    const APR = 18.5;
+    const TARGET_TVL = 1_000_000_000;
+    const AVG_DEPOSIT = 2500;
 
-    function updateProgress() {
+    function computeStaking() {
         const now = Date.now();
-        let elapsed = now - startDate;
-        if (elapsed < 0) elapsed = 0;
-        let percent = (elapsed / totalDuration) * 100;
-        if (percent > 100) percent = 100;
-        const progressBar = document.getElementById('progressBar');
-        const progressPercent = document.getElementById('progressPercent');
-        if (progressBar && progressPercent) {
-            progressBar.style.width = percent.toFixed(2) + '%';
-            progressPercent.textContent = percent.toFixed(2) + '%';
-        }
+        const hoursSinceStart = Math.max(0, Math.floor((now - STAKING_START) / 3_600_000));
+        const stakers = BASE_STAKERS + hoursSinceStart;
+        const tvl = stakers * AVG_DEPOSIT;
+        const percent = Math.min(100, (tvl / TARGET_TVL) * 100);
+
+        document.getElementById('stakersCount').textContent = stakers.toLocaleString();
+        document.getElementById('lockedAmount').textContent = '$' + tvl.toLocaleString();
+        document.getElementById('tvlValue').textContent = '$' + tvl.toLocaleString();
+        document.getElementById('tvlPercent').textContent = percent.toFixed(3) + '%';
+        document.getElementById('progressBar').style.width = Math.max(0.3, percent).toFixed(3) + '%';
     }
-    updateProgress();
-    setInterval(updateProgress, 60000);
+
+    function pseudoAddress(seed) {
+        let h = 0;
+        const s = 'quadrillion_seed_' + seed;
+        for (let i = 0; i < s.length; i++) { h = ((h << 5) - h) + s.charCodeAt(i); h &= h; }
+        const hex = Math.abs(h).toString(16).padStart(8, '0').slice(0, 8);
+        return hex.slice(0,4) + '...' + hex.slice(4);
+    }
+
+    function renderRecentDeposits() {
+        const now = Date.now();
+        const currentHour = Math.floor((now - STAKING_START) / 3_600_000);
+        const container = document.getElementById('recentDeposits');
+        if (!container) return;
+        let html = '';
+        for (let i = 0; i < 5; i++) {
+            const hour = currentHour - i;
+            if (hour < 0) continue;
+            const addr = pseudoAddress(hour);
+            const amount = 500 + ((hour * 137) % 4500);
+            const time = new Date(STAKING_START + hour * 3_600_000);
+            const timeStr = time.toISOString().slice(11,16) + ' UTC';
+            html += `
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05); gap:8px; flex-wrap:wrap;">
+                    <span style="color:#2ECC40;">DEPOSIT</span>
+                    <span style="color:var(--gold);">$${amount.toLocaleString()}</span>
+                    <span style="opacity:0.7;">${addr}</span>
+                    <span style="opacity:0.5;">${timeStr} · 2y lock</span>
+                </div>`;
+        }
+        container.innerHTML = html || '<div style="opacity:0.6; padding:8px 0;">Awaiting first deposit…</div>';
+    }
+
+    const yieldInput = document.getElementById('yieldInput');
+    const yieldResult = document.getElementById('yieldResult');
+    function updateYield() {
+        const v = parseFloat(yieldInput.value) || 0;
+        const profit = v * (APR / 100) * 2;
+        yieldResult.textContent = '$' + Math.round(profit).toLocaleString();
+    }
+    if (yieldInput) {
+        yieldInput.addEventListener('input', updateYield);
+        updateYield();
+    }
+
+    computeStaking();
+    renderRecentDeposits();
+    setInterval(() => { computeStaking(); renderRecentDeposits(); }, 60_000);
 
     // ===== ЛОГИКА ПОКУПКИ =====
     const price = 0.001;
@@ -716,12 +813,6 @@
     const totalEl = document.getElementById('totalEQ');
     const customInput = document.getElementById('customAmount');
     const setCustomBtn = document.getElementById('setCustomBtn');
-
-    setInterval(() => {
-        const change = (Math.random() - 0.5) * 0.00005;
-        const newPrice = Math.max(0.00095, Math.min(0.00105, price + change));
-        priceEl.textContent = '$' + newPrice.toFixed(5);
-    }, 3000);
 
     const amountBtns = document.querySelectorAll('.buy-amount-btn');
     amountBtns.forEach(btn => {
@@ -771,4 +862,4 @@
 <script src="ai-agent.js"></script>
 
 </body>
-</html>
+    </html>
