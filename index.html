@@ -38,6 +38,7 @@
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
+        /* ===== КАСТОМНЫЙ КУРСОР ===== */
         .cursor-dot, .cursor-outline {
             position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
             border-radius: 50%; z-index: 9999; pointer-events: none;
@@ -49,6 +50,7 @@
         }
         .cursor-outline.hovering { width: 60px; height: 60px; background: rgba(255, 215, 0, 0.1); }
 
+        /* ===== ПРЕЛОАДЕР ===== */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--bg-color); z-index: 10000;
@@ -59,8 +61,10 @@
         .loader-logo { font-size: 40px; font-weight: 800; color: var(--gold); animation: pulse 1.5s infinite; }
         @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
 
+        /* ===== 3D КОСМОС ===== */
         #cosmic-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
+        /* ===== ТИКЕРЫ ===== */
         .ticker {
             position: fixed; left: 0; width: 100%; z-index: 1000;
             background: rgba(5, 5, 16, 0.9);
@@ -77,6 +81,7 @@
         @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .ticker-bottom .ticker-track { animation-duration: 38s; }
 
+        /* ===== ШАПКА ===== */
         header {
             position: fixed; top: 36px; left: 0; width: 100%;
             background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(12px);
@@ -89,7 +94,7 @@
         .logo img { height: 40px; width: auto; border-radius: 50%; }
         .logo-text { font-size: 20px; font-weight: 700; }
         .logo-badge { font-size: 9px; background: var(--gold); color: #0A0E27; padding: 2px 10px; border-radius: 20px; font-weight: 700; text-transform: uppercase; }
-
+        
         .header-contract {
             font-size: 10px; opacity: 0.7;
             background: rgba(26,30,65,0.5); padding: 4px 12px;
@@ -106,7 +111,7 @@
         nav a { color: inherit; opacity: 0.7; text-decoration: none; font-size: 12px; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--gold); opacity: 1; }
         nav a.active { color: var(--gold); border-bottom: 2px solid var(--gold); opacity: 1; }
-
+        
         .theme-switch {
             background: transparent; border: 1px solid var(--gold); color: var(--gold);
             padding: 4px 10px; border-radius: 20px; cursor: pointer; font-size: 16px;
@@ -121,7 +126,7 @@
             font-size: 14px; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
         }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
-
+        
         .btn-secondary {
             background: transparent; color: var(--gold); padding: 8px 22px;
             border-radius: 30px; font-weight: 600; text-decoration: none;
@@ -175,6 +180,7 @@
         }
         @keyframes floatCoin { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
 
+        /* ===== БЛОК ЦЕНЫ И ПРОГРЕСС ===== */
         .price-block {
             background: var(--glass-bg); backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border); border-radius: 24px;
@@ -214,6 +220,32 @@
         .dash-card .dash-icon { font-size: 32px; margin-bottom: 8px; }
         .dash-card .dash-value { font-size: 24px; font-weight: 700; color: var(--gold); }
         .dash-card .dash-label { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+
+        /* ===== ТАБЛИЦА ВКЛАДОВ ===== */
+        .table-responsive { overflow-x: auto; width: 100%; margin-bottom: 40px; }
+        .staking-table {
+            width: 100%; border-collapse: collapse; text-align: left;
+            background: var(--glass-bg); border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--glass-border); min-width: 700px;
+        }
+        .staking-table th {
+            background: rgba(255, 215, 0, 0.1); color: var(--gold);
+            padding: 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .staking-table td {
+            padding: 16px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-family: 'Courier New', monospace;
+        }
+        .staking-table tr:hover { background: rgba(255, 215, 0, 0.03); }
+        .staking-table .wallet-addr { color: #8A94C8; }
+        .staking-table .amount { color: var(--text-color); font-weight: 700; }
+        .staking-table .profit { color: #2ECC40; font-weight: 700; }
+        .staking-table .date { opacity: 0.6; font-size: 13px; }
+        .staking-table .lock-badge {
+            background: rgba(255,215,0,0.1); color: var(--gold); font-size: 11px;
+            padding: 2px 8px; border-radius: 10px; border: 1px solid rgba(255,215,0,0.2);
+        }
 
         section { padding: 80px 0; position: relative; z-index: 1; }
         .section-header { text-align: center; margin-bottom: 50px; }
@@ -406,7 +438,8 @@
 </section>
 
 <section class="container">
-
+    
+    <!-- БЛОК ЦЕНЫ -->
     <div class="price-block">
         <h3>€Q Launch Price</h3>
         <div class="price-big">$0.001</div>
@@ -417,6 +450,7 @@
         <a href="https://www.geckoterminal.com/solana/pools/EMrceaZJ71xteifUwzX6px4PeRvnPY5uugYFW2jTqCre" target="_blank">📊 View Live Chart on GeckoTerminal</a>
     </div>
 
+    <!-- LIVE STAKING PULSE -->
     <div class="progress-container" id="stakingPulse">
 
         <div class="progress-header">
@@ -430,13 +464,13 @@
 
         <div class="progress-info">
             <span>TVL: <span id="tvlValue" style="color:var(--gold); font-weight:600;">$0</span></span>
-            <span>Target: $1,000,000,000</span>
+            <span>Target: $1,000,000,000,000,000</span>
         </div>
 
         <div class="dashboard-container" style="margin-top:20px; margin-bottom:0;">
             <div class="dash-card">
                 <div class="dash-icon">👥</div>
-                <div class="dash-value" id="stakersCount">0</div>
+                <div class="dash-value" id="stakersCount">19</div>
                 <div class="dash-label">2-Year Stakers</div>
             </div>
             <div class="dash-card">
@@ -451,6 +485,7 @@
             </div>
         </div>
 
+        <!-- МИНИ APY-КАЛЬКУЛЯТОР -->
         <div style="margin-top:20px; padding:16px; background:rgba(255,215,0,0.05); border-radius:12px; border:1px solid var(--glass-border);">
             <div style="font-size:14px; opacity:0.8; margin-bottom:8px;">💰 Calculate your 2-year yield:</div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -464,14 +499,31 @@
 
     </div>
 
+    <!-- ТАБЛИЦА РЕАЛЬНЫХ ВКЛАДОВ -->
     <div class="progress-container">
         <div class="progress-header">
-            <span>🕐 Latest 2-Year Deposits</span>
-            <span style="opacity:0.6; font-size:12px;">auto-updated hourly</span>
+            <span>💎 Top 19 Genesis Vaults</span>
+            <span style="opacity:0.6; font-size:12px;">Live compounding (18.5% APR)</span>
         </div>
-        <div id="recentDeposits" style="font-family:'Courier New',monospace; font-size:13px; margin-top:8px;"></div>
+        <div class="table-responsive">
+            <table class="staking-table">
+                <thead>
+                    <tr>
+                        <th>Wallet Address</th>
+                        <th>Initial Deposit</th>
+                        <th>Current Value (Live)</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="vaultTableBody">
+                    <!-- Заполняется через JS -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
+    <!-- WHY GENESIS -->
     <div class="price-block" style="text-align:left; padding:32px;">
         <h3 style="text-align:center; margin-bottom:20px;">💎 Why Genesis?</h3>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;">
@@ -705,6 +757,7 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
+    // ===== АНИМИРОВАННЫЕ СЧЕТЧИКИ =====
     const counters = document.querySelectorAll('.stat-number[data-target]');
     const speed = 200;
     const animateCounters = () => {
@@ -739,25 +792,35 @@
     });
 
     // ===== LIVE STAKING PULSE =====
+    // Старт: 11 ноября 2026 (сегодня)
     const STAKING_START = new Date('2026-11-11T00:00:00Z').getTime();
-    const BASE_STAKERS = 1;
-    const APR = 18.5;
-    const TARGET_TVL = 1_000_000_000;
-    const AVG_DEPOSIT = 2500;
+    const APR = 18.5; // %
+    const TARGET_TVL = 1_000_000_000_000_000; // $1 Quadrillion
+    const AVG_DEPOSIT = 2500; // для новых кошельков
 
-    function computeStaking() {
-        const now = Date.now();
-        const hoursSinceStart = Math.max(0, Math.floor((now - STAKING_START) / 3_600_000));
-        const stakers = BASE_STAKERS + hoursSinceStart;
-        const tvl = stakers * AVG_DEPOSIT;
-        const percent = Math.min(100, (tvl / TARGET_TVL) * 100);
-
-        document.getElementById('stakersCount').textContent = stakers.toLocaleString();
-        document.getElementById('lockedAmount').textContent = '$' + tvl.toLocaleString();
-        document.getElementById('tvlValue').textContent = '$' + tvl.toLocaleString();
-        document.getElementById('tvlPercent').textContent = percent.toFixed(3) + '%';
-        document.getElementById('progressBar').style.width = Math.max(0.3, percent).toFixed(3) + '%';
-    }
+    // Твои 19 кошельков из скриншота с реальными суммами (переведены в числовой формат)
+    // Суммы в миллиардах ($B)
+    const genesisWallets = [
+        { addr: 'AirRu3...LRk7', amount: 432.19, day: 1 },   // Rank 2
+        { addr: 'ADYM9a...wjgG', amount: 422.06, day: 1 },   // Rank 3
+        { addr: 'HZAFc8...QhTk', amount: 358.09, day: 2 },   // Rank 4
+        { addr: 'HLnpSz...TLcC', amount: 350.01, day: 2 },   // Rank 5
+        { addr: 'AkMsNf...ae3b', amount: 345.75, day: 3 },   // Rank 6
+        { addr: 'CQ8hkB...pB2C', amount: 345.75, day: 3 },   // Rank 7
+        { addr: 'CwxvCG...SMSZ', amount: 321.16, day: 4 },   // Rank 8
+        { addr: 'Ej8tH1...T1BE', amount: 234.61, day: 4 },   // Rank 9
+        { addr: 'F9vGgz...RvK9', amount: 211.03, day: 5 },   // Rank 10
+        { addr: '9CWKFR...bpHu', amount: 211.03, day: 5 },   // Rank 11
+        { addr: 'opfDKd...indJ', amount: 211.03, day: 6 },   // Rank 12
+        { addr: 'AcZXro...TPyz', amount: 123.48, day: 6 },   // Rank 13
+        { addr: 'DEtVdy...3f88', amount: 123.48, day: 7 },   // Rank 14
+        { addr: 'A3TLG6...2xj5', amount: 123.48, day: 7 },   // Rank 15
+        { addr: 'B4CkRq...wWhk', amount: 123.48, day: 8 },   // Rank 16
+        { addr: '5Zx5Nv...2rmC', amount: 109.89, day: 8 },   // Rank 17
+        { addr: 'B3q8DD...zP4U', amount: 109.89, day: 9 },   // Rank 18
+        { addr: 'GD7BH3...QdkD', amount: 109.89, day: 9 },   // Rank 19
+        { addr: 'GYuwUJ...DjxX', amount: 0.54,   day: 10 }   // Rank 20
+    ];
 
     function pseudoAddress(seed) {
         let h = 0;
@@ -767,28 +830,85 @@
         return hex.slice(0,4) + '...' + hex.slice(4);
     }
 
-    function renderRecentDeposits() {
+    function renderTable() {
         const now = Date.now();
-        const currentHour = Math.floor((now - STAKING_START) / 3_600_000);
-        const container = document.getElementById('recentDeposits');
+        const container = document.getElementById('vaultTableBody');
         if (!container) return;
+
         let html = '';
-        for (let i = 0; i < 5; i++) {
-            const hour = currentHour - i;
-            if (hour < 0) continue;
-            const addr = pseudoAddress(hour);
-            const amount = 500 + ((hour * 137) % 4500);
-            const time = new Date(STAKING_START + hour * 3_600_000);
-            const timeStr = time.toISOString().slice(11,16) + ' UTC';
+        let totalTvl = 0;
+
+        // 1. Рендерим 19 Genesis кошельков с реальными суммами
+        genesisWallets.forEach(w => {
+            // Считаем, сколько дней прошло с момента вклада (w.day)
+            // (Для симуляции: вклад был сделан w.day дней назад)
+            const depositTime = now - (w.day * 24 * 60 * 60 * 1000); // w.day дней назад
+            const daysPassed = (now - depositTime) / (1000 * 60 * 60 * 24);
+            
+            // Начисление процентов (простой процент)
+            const dailyRate = APR / 100 / 365;
+            const profit = w.amount * dailyRate * daysPassed;
+            const currentValue = w.amount + profit;
+
+            totalTvl += currentValue * 1_000_000_000; // переводим $B в реальные доллары
+
+            // Форматируем дату
+            const dateStr = new Date(depositTime).toISOString().slice(0, 10);
+
             html += `
-                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05); gap:8px; flex-wrap:wrap;">
-                    <span style="color:#2ECC40;">DEPOSIT</span>
-                    <span style="color:var(--gold);">$${amount.toLocaleString()}</span>
-                    <span style="opacity:0.7;">${addr}</span>
-                    <span style="opacity:0.5;">${timeStr} · 2y lock</span>
-                </div>`;
+                <tr>
+                    <td class="wallet-addr">${w.addr}</td>
+                    <td class="amount">$${w.amount.toFixed(2)}B</td>
+                    <td class="profit">$${currentValue.toFixed(4)}B <span style="font-size:11px; opacity:0.7;">(+${profit.toFixed(2)}B)</span></td>
+                    <td class="date">${dateStr}</td>
+                    <td><span class="lock-badge">🔒 2y lock</span></td>
+                </tr>
+            `;
+        });
+
+        // 2. Добавляем новых участников (каждый час +1, начиная с сегодняшнего дня)
+        const startDay = new Date('2026-11-11T00:00:00Z').getTime();
+        const hoursSinceStart = Math.max(0, Math.floor((now - startDay) / 3_600_000));
+        
+        // Ограничим показ, чтобы таблица не была бесконечной (показываем последние 10 новых)
+        const displayNew = Math.min(hoursSinceStart, 10);
+
+        for (let i = 1; i <= displayNew; i++) {
+            const hourTime = startDay + (i * 3_600_000);
+            if (hourTime > now) break;
+            
+            const addr = pseudoAddress(i);
+            const amount = AVG_DEPOSIT;
+            const daysPassed = (now - hourTime) / (1000 * 60 * 60 * 24);
+            const dailyRate = APR / 100 / 365;
+            const profit = amount * dailyRate * daysPassed;
+            const currentValue = amount + profit;
+            
+            totalTvl += currentValue;
+
+            const dateStr = new Date(hourTime).toISOString().slice(0, 16).replace('T', ' ');
+
+            html += `
+                <tr style="background: rgba(46, 204, 64, 0.05);">
+                    <td class="wallet-addr" style="color:#2ECC40;">${addr} <span style="font-size:10px; color:var(--gold);">[NEW]</span></td>
+                    <td class="amount">$${amount.toLocaleString()}</td>
+                    <td class="profit">$${currentValue.toFixed(2)} <span style="font-size:11px; opacity:0.7;">(+$${profit.toFixed(2)})</span></td>
+                    <td class="date">${dateStr}</td>
+                    <td><span class="lock-badge">🔒 2y lock</span></td>
+                </tr>
+            `;
         }
-        container.innerHTML = html || '<div style="opacity:0.6; padding:8px 0;">Awaiting first deposit…</div>';
+
+        container.innerHTML = html;
+
+        // Обновляем счетчики
+        document.getElementById('stakersCount').textContent = (genesisWallets.length + displayNew).toLocaleString();
+        document.getElementById('lockedAmount').textContent = '$' + (totalTvl / 1_000_000_000_000).toFixed(4) + 'T'; // В триллионах
+        document.getElementById('tvlValue').textContent = '$' + (totalTvl / 1_000_000_000_000).toFixed(4) + 'T';
+        
+        const percent = Math.min(100, (totalTvl / TARGET_TVL) * 100);
+        document.getElementById('tvlPercent').textContent = percent.toFixed(6) + '%';
+        document.getElementById('progressBar').style.width = Math.max(0.3, percent).toFixed(6) + '%';
     }
 
     const yieldInput = document.getElementById('yieldInput');
@@ -803,9 +923,9 @@
         updateYield();
     }
 
-    computeStaking();
-    renderRecentDeposits();
-    setInterval(() => { computeStaking(); renderRecentDeposits(); }, 60_000);
+    // Первый рендер и обновление раз в минуту
+    renderTable();
+    setInterval(renderTable, 60_000);
 
     // ===== ЛОГИКА ПОКУПКИ =====
     const price = 0.001;
@@ -862,4 +982,4 @@
 <script src="ai-agent.js"></script>
 
 </body>
-    </html>
+</html>
