@@ -731,6 +731,7 @@
 
         const lineSeries = chart.addLineSeries({ color: '#FFD700', lineWidth: 2 });
         
+        // Генерируем фейковые данные для графика (симуляция)
         const data = [];
         let price = 0.001;
         const now = Math.floor(Date.now() / 1000);
@@ -783,8 +784,9 @@
         }
     }
     
+    // Добавляем транзакции каждые 3-7 секунд
     setInterval(addTransaction, Math.random() * 4000 + 3000);
-    addTransaction();
+    addTransaction(); // Первая транзакция сразу
 
     // ===== 10. ЛОГИКА ПОКУПКИ =====
     const price = 0.001;
