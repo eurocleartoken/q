@@ -6,14 +6,10 @@
     <title>€Quadrillion (€Q) — The Core of the Infinite Network</title>
     <meta name="description" content="€Quadrillion — The ultimate Governance & Treasury token of the 123 Network. Token-2022. Target: ×1000." />
     <link rel="icon" href="quadrillion_logo.png" />
-    
-    <!-- Three.js для 3D-фона -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Vanilla-tilt для 3D-карточек -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
     <style>
-        /* ===== ОБЩИЕ СТИЛИ ===== */
         :root {
             --bg-color: #050510;
             --text-color: #E0E6FF;
@@ -42,7 +38,6 @@
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* ===== КАСТОМНЫЙ КУРСОР ===== */
         .cursor-dot, .cursor-outline {
             position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
             border-radius: 50%; z-index: 9999; pointer-events: none;
@@ -54,7 +49,6 @@
         }
         .cursor-outline.hovering { width: 60px; height: 60px; background: rgba(255, 215, 0, 0.1); }
 
-        /* ===== ПРЕЛОАДЕР ===== */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--bg-color); z-index: 10000;
@@ -65,10 +59,8 @@
         .loader-logo { font-size: 40px; font-weight: 800; color: var(--gold); animation: pulse 1.5s infinite; }
         @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
 
-        /* ===== 3D КОСМОС ===== */
         #cosmic-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
-        /* ===== ТИКЕРЫ ===== */
         .ticker {
             position: fixed; left: 0; width: 100%; z-index: 1000;
             background: rgba(5, 5, 16, 0.9);
@@ -85,7 +77,6 @@
         @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .ticker-bottom .ticker-track { animation-duration: 38s; }
 
-        /* ===== ШАПКА ===== */
         header {
             position: fixed; top: 36px; left: 0; width: 100%;
             background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(12px);
@@ -98,7 +89,7 @@
         .logo img { height: 40px; width: auto; border-radius: 50%; }
         .logo-text { font-size: 20px; font-weight: 700; }
         .logo-badge { font-size: 9px; background: var(--gold); color: #0A0E27; padding: 2px 10px; border-radius: 20px; font-weight: 700; text-transform: uppercase; }
-        
+
         .header-contract {
             font-size: 10px; opacity: 0.7;
             background: rgba(26,30,65,0.5); padding: 4px 12px;
@@ -115,8 +106,7 @@
         nav a { color: inherit; opacity: 0.7; text-decoration: none; font-size: 12px; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--gold); opacity: 1; }
         nav a.active { color: var(--gold); border-bottom: 2px solid var(--gold); opacity: 1; }
-        
-        /* Переключатель темы */
+
         .theme-switch {
             background: transparent; border: 1px solid var(--gold); color: var(--gold);
             padding: 4px 10px; border-radius: 20px; cursor: pointer; font-size: 16px;
@@ -124,7 +114,6 @@
         }
         .theme-switch:hover { background: var(--gold); color: var(--bg-color); }
 
-        /* ===== МАГНИТНЫЕ КНОПКИ ===== */
         .btn-primary {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #0A0E27; padding: 8px 22px;
             border-radius: 30px; font-weight: 700; text-decoration: none;
@@ -132,7 +121,7 @@
             font-size: 14px; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
         }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
-        
+
         .btn-secondary {
             background: transparent; color: var(--gold); padding: 8px 22px;
             border-radius: 30px; font-weight: 600; text-decoration: none;
@@ -140,7 +129,6 @@
         }
         .btn-secondary:hover { background: var(--gold); color: var(--bg-color); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
 
-        /* ===== HERO ===== */
         .hero { padding: 20px 0 60px; position: relative; z-index: 1; min-height: 80vh; display: flex; align-items: center; }
         .hero-inner { display: flex; align-items: center; gap: 40px; position: relative; z-index: 1; }
         .hero-content {
@@ -148,7 +136,6 @@
             border: 1px solid var(--glass-border); border-radius: 30px; padding: 40px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 30px rgba(255,215,0,0.05);
         }
-        
         .hero-tag { display: inline-block; background: rgba(255, 215, 0, 0.15); color: var(--gold); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 12px; border: 1px solid var(--glass-border); }
         .hero h1 {
             font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 16px;
@@ -157,7 +144,6 @@
         }
         .hero h1 .highlight { color: var(--gold); -webkit-text-fill-color: var(--gold); }
         .hero p { font-size: 18px; opacity: 0.8; max-width: 500px; margin-bottom: 24px; }
-        
         .hero-stats { display: flex; gap: 30px; margin-bottom: 24px; flex-wrap: wrap; }
         .stat-number { display: block; font-size: 28px; font-weight: 700; }
         .stat-label { font-size: 12px; opacity: 0.6; }
@@ -189,7 +175,6 @@
         }
         @keyframes floatCoin { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
 
-        /* ===== БЛОК ЦЕНЫ И ПРОГРЕСС ===== */
         .price-block {
             background: var(--glass-bg); backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border); border-radius: 24px;
@@ -208,13 +193,28 @@
 
         .progress-container {
             background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 16px; padding: 20px; margin-bottom: 40px;
+            border-radius: 16px; padding: 24px; margin-bottom: 40px;
         }
-        .progress-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; font-weight: 600; }
-        .progress-bar-bg { background: rgba(0,0,0,0.5); border-radius: 10px; height: 16px; overflow: hidden; }
-        .progress-bar-fill { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); height: 100%; width: 0%; transition: width 1s ease-in-out; border-radius: 10px; }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 15px; font-weight: 600; }
+        .progress-header span:last-child { color: var(--gold); font-size: 18px; }
+        .progress-bar-bg { background: rgba(0,0,0,0.5); border-radius: 10px; height: 20px; overflow: hidden; position: relative; }
+        .progress-bar-fill { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); height: 100%; width: 0%; transition: width 1s ease-in-out; border-radius: 10px; box-shadow: 0 0 15px rgba(255,215,0,0.5); }
+        .progress-info { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; opacity: 0.6; }
 
-        /* ===== СЕКЦИИ ===== */
+        .dashboard-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; margin-bottom: 40px;
+        }
+        .dash-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 24px; text-align: center;
+            transition: 0.3s;
+        }
+        .dash-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+        .dash-card .dash-icon { font-size: 32px; margin-bottom: 8px; }
+        .dash-card .dash-value { font-size: 24px; font-weight: 700; color: var(--gold); }
+        .dash-card .dash-label { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+
         section { padding: 80px 0; position: relative; z-index: 1; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-tag { display: inline-block; background: rgba(255, 215, 0, 0.12); color: var(--gold); padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--glass-border); }
@@ -261,20 +261,6 @@
         .rwa-card h4 { font-size: 17px; }
         .rwa-card p { opacity: 0.8; font-size: 14px; margin-top: 6px; }
 
-        /* ===== LIVE TRANSACTIONS FEED ===== */
-        .live-feed-container {
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 16px; padding: 16px; margin-bottom: 40px;
-            max-height: 200px; overflow-y: auto;
-        }
-        .live-feed-title { font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        .live-feed-title::before { content: ''; width: 8px; height: 8px; background: #ff4444; border-radius: 50%; animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .live-feed-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; font-family: 'Courier New', monospace; }
-        .live-feed-item .buy { color: #2ECC40; }
-        .live-feed-item .sell { color: #FF4444; }
-
-        /* Подвал */
         footer { background: rgba(2, 2, 10, 0.8); padding: 40px 0 20px; position: relative; z-index: 1; border-top: 1px solid var(--glass-border); margin-bottom: 40px; }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
         .footer-brand { display: flex; align-items: center; gap: 8px; }
@@ -339,19 +325,11 @@
 </head>
 <body data-theme="dark">
 
-<!-- ПРЕЛОАДЕР -->
-<div id="preloader">
-    <div class="loader-logo">€Q</div>
-</div>
-
-<!-- КАСТОМНЫЙ КУРСОР -->
+<div id="preloader"><div class="loader-logo">€Q</div></div>
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
-
-<!-- 3D КОСМОС -->
 <canvas id="cosmic-bg"></canvas>
 
-<!-- ТИКЕР 1 -->
 <div class="ticker ticker-top">
     <div class="ticker-track">
         <span>👑 <span class="highlight-ticker">€Quadrillion (€Q)</span> — The Core of the Infinite Network • Token-2022</span>
@@ -371,7 +349,6 @@
     </div>
 </div>
 
-<!-- ШАПКА -->
 <header>
     <div class="container header-inner">
         <div class="logo">
@@ -397,15 +374,12 @@
     </div>
 </header>
 
-<!-- HERO (3D Tilt) -->
 <section class="hero">
     <div class="container hero-inner">
         <div class="hero-content" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
             <div class="hero-tag">👑 123 Network Flagship Core</div>
             <h1>€Quadrillion — <span class="highlight">$0.001</span> The Infinite Network</h1>
-            <p>
-                The ultimate, institutional-grade Governance & Treasury token of the 123 Network. Built on <strong>Token-2022</strong> with exclusive features: Soulbound Governance, AI-Augmented Treasury, and Physical Asset Backing. Launching at <strong>$0.001</strong> → <strong>×1000 Target</strong>.
-            </p>
+            <p>The ultimate, institutional-grade Governance & Treasury token of the 123 Network. Built on <strong>Token-2022</strong> with exclusive features: Soulbound Governance, AI-Augmented Treasury, and Physical Asset Backing. Launching at <strong>$0.001</strong> → <strong>×1000 Target</strong>.</p>
             <div class="hero-stats">
                 <div class="stat"><span class="stat-number counter-visitors" data-target="8889000">0</span><span class="stat-label">Visitors</span></div>
                 <div class="stat"><span class="stat-number counter-holders" data-target="11">0</span><span class="stat-label">Holders</span></div>
@@ -431,39 +405,52 @@
     </div>
 </section>
 
-<!-- БЛОК ЦЕНЫ И ПРОГРЕСС (вместо графика) -->
+<!-- ЦЕНА + 5-ЛЕТНИЙ ПРОГРЕСС + ДАШБОРД (без Live Transactions) -->
 <section class="container">
-    
-    <!-- Блок живой цены -->
     <div class="price-block">
         <h3>€Q Live Price</h3>
         <div class="price-big">$0.001</div>
-        <a href="https://www.geckoterminal.com/solana/pools/EMrceaZJ71xteifUwzX6px4PeRvnPY5uugYFW2jTqCre" target="_blank">
-            📊 View Live Chart on GeckoTerminal
-        </a>
+        <a href="https://www.geckoterminal.com/solana/pools/EMrceaZJ71xteifUwzX6px4PeRvnPY5uugYFW2jTqCre" target="_blank">📊 View Live Chart on GeckoTerminal</a>
     </div>
 
-    <!-- Прогресс-бар -->
     <div class="progress-container">
         <div class="progress-header">
-            <span>Bonding Curve Progress (Sold: 5%)</span>
-            <span id="progressPercent">5%</span>
+            <span>⏳ 5-Year Journey Progress</span>
+            <span id="progressPercent">0.00%</span>
         </div>
         <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="progressBar" style="width: 5%;"></div>
+            <div class="progress-bar-fill" id="progressBar" style="width: 0%;"></div>
+        </div>
+        <div class="progress-info">
+            <span>Start: Nov 11, 2026</span>
+            <span>Finish: Nov 11, 2031</span>
         </div>
     </div>
 
-    <!-- Живая лента транзакций -->
-    <div class="live-feed-container">
-        <div class="live-feed-title">LIVE TRANSACTIONS</div>
-        <div id="liveFeed">
-            <!-- Заполняется через JS -->
+    <div class="dashboard-container">
+        <div class="dash-card" data-tilt data-tilt-max="5">
+            <div class="dash-icon">👥</div>
+            <div class="dash-value">11</div>
+            <div class="dash-label">Holders</div>
+        </div>
+        <div class="dash-card" data-tilt data-tilt-max="5">
+            <div class="dash-icon">💧</div>
+            <div class="dash-value">$345B</div>
+            <div class="dash-label">Pool Liquidity</div>
+        </div>
+        <div class="dash-card" data-tilt data-tilt-max="5">
+            <div class="dash-icon">💰</div>
+            <div class="dash-value">$8.89T</div>
+            <div class="dash-label">Market Cap</div>
+        </div>
+        <div class="dash-card" data-tilt data-tilt-max="5">
+            <div class="dash-icon">🔥</div>
+            <div class="dash-value">0</div>
+            <div class="dash-label">Fees to Vault</div>
         </div>
     </div>
 </section>
 
-<!-- ТЕХНОЛОГИИ -->
 <section id="technology">
     <div class="container">
         <div class="section-header">
@@ -494,7 +481,6 @@
     </div>
 </section>
 
-<!-- БЫСТРАЯ ПОКУПКА -->
 <section id="buy">
     <div class="container">
         <div class="quick-buy" data-tilt data-tilt-max="3" data-tilt-speed="400">
@@ -525,7 +511,6 @@
     </div>
 </section>
 
-<!-- О ТОКЕНЕ / RWA -->
 <section id="about">
     <div class="container">
         <div class="section-header">
@@ -542,7 +527,6 @@
     </div>
 </section>
 
-<!-- ТИКЕР 2 -->
 <div class="ticker ticker-bottom">
     <div class="ticker-track">
         <span>👑 <span class="highlight-ticker">€Q = $0.001</span> • ×1000 Target</span>
@@ -562,7 +546,6 @@
     </div>
 </div>
 
-<!-- ПОДВАЛ -->
 <footer>
     <div class="container footer-inner">
         <div class="footer-brand">
@@ -605,40 +588,31 @@
     </div>
 </footer>
 
-<!-- СКРИПТЫ -->
 <script>
-    // ===== 1. ПРЕЛОАДЕР =====
     window.addEventListener('load', () => {
         document.getElementById('preloader').classList.add('hidden');
     });
 
-    // ===== 2. КАСТОМНЫЙ КУРСОР =====
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
-    
     window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
+        const posX = e.clientX, posY = e.clientY;
         cursorDot.style.left = `${posX}px`;
         cursorDot.style.top = `${posY}px`;
         cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
     });
-
     document.querySelectorAll('a, button, .tech-card, .rwa-card').forEach(el => {
         el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
         el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
     });
 
-    // ===== 3. ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ =====
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         body.setAttribute('data-theme', savedTheme);
         themeToggle.textContent = savedTheme === 'light' ? '☀️' : '🌙';
     }
-
     themeToggle.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -647,7 +621,6 @@
         localStorage.setItem('theme', newTheme);
     });
 
-    // ===== 4. 3D КОСМОС (Three.js) =====
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('cosmic-bg'), alpha: true });
@@ -656,14 +629,9 @@
     const geometry = new THREE.BufferGeometry();
     const particlesCount = 2000;
     const posArray = new Float32Array(particlesCount * 3);
-
-    for(let i = 0; i < particlesCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 10;
-    }
-
+    for(let i = 0; i < particlesCount * 3; i++) posArray[i] = (Math.random() - 0.5) * 10;
     geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     const material = new THREE.PointsMaterial({ size: 0.005, color: 0xFFD700, transparent: true, opacity: 0.8 });
-
     const particlesMesh = new THREE.Points(geometry, material);
     scene.add(particlesMesh);
     camera.position.z = 3;
@@ -673,7 +641,6 @@
         mouseX = (e.clientX / window.innerWidth) - 0.5;
         mouseY = (e.clientY / window.innerHeight) - 0.5;
     });
-
     function animate() {
         requestAnimationFrame(animate);
         particlesMesh.rotation.y += 0.001;
@@ -683,24 +650,20 @@
         renderer.render(scene, camera);
     }
     animate();
-
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // ===== 5. АНИМИРОВАННЫЕ СЧЕТЧИКИ =====
     const counters = document.querySelectorAll('.stat-number[data-target]');
     const speed = 200;
-
     const animateCounters = () => {
         counters.forEach(counter => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText.replace(/,/g, '');
                 const inc = target / speed;
-
                 if (count < target) {
                     counter.innerText = Math.ceil(count + inc).toLocaleString();
                     setTimeout(updateCount, 1);
@@ -711,13 +674,11 @@
             updateCount();
         });
     };
-
     const observer = new IntersectionObserver((entries) => {
         if(entries[0].isIntersecting) { animateCounters(); observer.disconnect(); }
     });
     observer.observe(document.querySelector('.hero-stats'));
 
-    // ===== 6. МАГНИТНЫЕ КНОПКИ =====
     document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
@@ -728,67 +689,28 @@
         btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
 
-// ===== 7. ПРОГРЕСС-БАР НА 5 ЛЕТ =====
-// Старт: 11 ноября 2026 (сегодня)
-// Финиш: 11 ноября 2031 (через 5 лет)
-const startDate = new Date('2026-11-11T00:00:00Z').getTime();
-const endDate = new Date('2031-11-11T00:00:00Z').getTime();
-const totalDuration = endDate - startDate;
+    // ===== 5-ЛЕТНИЙ ПРОГРЕСС (считается от реальной даты, НЕ сбрасывается) =====
+    const startDate = new Date('2026-11-11T00:00:00Z').getTime();
+    const endDate = new Date('2031-11-11T00:00:00Z').getTime();
+    const totalDuration = endDate - startDate;
 
-function updateProgress() {
-    const now = Date.now();
-    let elapsed = now - startDate;
-    
-    // Если время еще не пришло — 0%
-    if (elapsed < 0) elapsed = 0;
-    
-    let percent = (elapsed / totalDuration) * 100;
-    
-    // Ограничиваем 100%
-    if (percent > 100) percent = 100;
-
-    const progressBar = document.getElementById('progressBar');
-    const progressPercent = document.getElementById('progressPercent');
-    
-    if (progressBar && progressPercent) {
-        // Показываем 2 знака после запятой для точности на старте
-        progressBar.style.width = percent.toFixed(2) + '%';
-        progressPercent.textContent = percent.toFixed(2) + '%';
-    }
-}
-
-// Обновляем каждые 60 секунд
-updateProgress();
-setInterval(updateProgress, 60000);
-    // ===== 8. ЖИВАЯ ЛЕНТА ТРАНЗАКЦИЙ =====
-    const liveFeed = document.getElementById('liveFeed');
-    const wallets = ['7xKX...9f2', '3mNq...4a1', '9pLk...7b3', '5rTz...2c8', '8wVd...6e5'];
-    
-    function addTransaction() {
-        const isBuy = Math.random() > 0.3;
-        const amount = (Math.random() * 10000 + 100).toFixed(2);
-        const wallet = wallets[Math.floor(Math.random() * wallets.length)];
-        
-        const item = document.createElement('div');
-        item.className = 'live-feed-item';
-        item.innerHTML = `
-            <span class="${isBuy ? 'buy' : 'sell'}">${isBuy ? 'BUY' : 'SELL'}</span>
-            <span>${amount} €Q</span>
-            <span>${wallet}</span>
-            <span>${new Date().toLocaleTimeString()}</span>
-        `;
-        liveFeed.prepend(item);
-        
-        if (liveFeed.children.length > 10) {
-            liveFeed.lastChild.remove();
+    function updateProgress() {
+        const now = Date.now();
+        let elapsed = now - startDate;
+        if (elapsed < 0) elapsed = 0;
+        let percent = (elapsed / totalDuration) * 100;
+        if (percent > 100) percent = 100;
+        const progressBar = document.getElementById('progressBar');
+        const progressPercent = document.getElementById('progressPercent');
+        if (progressBar && progressPercent) {
+            progressBar.style.width = percent.toFixed(2) + '%';
+            progressPercent.textContent = percent.toFixed(2) + '%';
         }
     }
-    
-    // Добавляем транзакции каждые 3-7 секунд
-    setInterval(addTransaction, Math.random() * 4000 + 3000);
-    addTransaction(); // Первая транзакция сразу
+    updateProgress();
+    setInterval(updateProgress, 60000);
 
-    // ===== 9. ЛОГИКА ПОКУПКИ =====
+    // ===== ЛОГИКА ПОКУПКИ =====
     const price = 0.001;
     const priceEl = document.getElementById('displayPrice');
     const totalEl = document.getElementById('totalEQ');
@@ -820,7 +742,6 @@ setInterval(updateProgress, 60000);
             alert('Enter a valid amount (e.g. 15)');
         }
     });
-
     customInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') setCustomBtn.click();
     });
@@ -829,10 +750,8 @@ setInterval(updateProgress, 60000);
         const eqAmount = Math.floor(usd / price);
         totalEl.textContent = eqAmount.toLocaleString();
     }
-
     updateTotal(50);
 
-    // Плавная прокрутка
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
