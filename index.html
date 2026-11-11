@@ -728,20 +728,38 @@
         btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
 
-    // ===== 7. ПРОГРЕСС-БАР =====
+// ===== 7. ПРОГРЕСС-БАР НА 5 ЛЕТ =====
+// Старт: 11 ноября 2026 (сегодня)
+// Финиш: 11 ноября 2031 (через 5 лет)
+const startDate = new Date('2026-11-11T00:00:00Z').getTime();
+const endDate = new Date('2031-11-11T00:00:00Z').getTime();
+const totalDuration = endDate - startDate;
+
+function updateProgress() {
+    const now = Date.now();
+    let elapsed = now - startDate;
+    
+    // Если время еще не пришло — 0%
+    if (elapsed < 0) elapsed = 0;
+    
+    let percent = (elapsed / totalDuration) * 100;
+    
+    // Ограничиваем 100%
+    if (percent > 100) percent = 100;
+
     const progressBar = document.getElementById('progressBar');
     const progressPercent = document.getElementById('progressPercent');
-    let currentProgress = 5;
     
-    setInterval(() => {
-        if (currentProgress < 100) {
-            currentProgress += Math.random() * 0.5;
-            if (currentProgress > 100) currentProgress = 100;
-            progressBar.style.width = currentProgress + '%';
-            progressPercent.textContent = Math.floor(currentProgress) + '%';
-        }
-    }, 5000);
+    if (progressBar && progressPercent) {
+        // Показываем 2 знака после запятой для точности на старте
+        progressBar.style.width = percent.toFixed(2) + '%';
+        progressPercent.textContent = percent.toFixed(2) + '%';
+    }
+}
 
+// Обновляем каждые 60 секунд
+updateProgress();
+setInterval(updateProgress, 60000);
     // ===== 8. ЖИВАЯ ЛЕНТА ТРАНЗАКЦИЙ =====
     const liveFeed = document.getElementById('liveFeed');
     const wallets = ['7xKX...9f2', '3mNq...4a1', '9pLk...7b3', '5rTz...2c8', '8wVd...6e5'];
